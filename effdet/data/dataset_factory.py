@@ -24,6 +24,9 @@ def create_dataset(name, root, splits=('train', 'val')):
             dataset_cfg = Coco2014Cfg()
         else:
             dataset_cfg = Coco2017Cfg()
+        if 'vis' in name:
+            dataset_cfg = Vis2021Cfg()
+            
         for s in splits:
             if s not in dataset_cfg.splits:
                 raise RuntimeError(f'{s} split not found in config')

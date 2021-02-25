@@ -27,6 +27,15 @@ class Coco2017Cfg(CocoCfg):
 
 
 @dataclass
+class Vis2021Cfg(CocoCfg):
+    variant: str = '2021'
+    splits: Dict[str, dict] = field(default_factory=lambda: dict(
+        train=dict(ann_filename='train/instances_train.json', img_dir='train/JPEGImages', has_labels=True),
+        val=dict(ann_filename='valid/ainstances_val.json', img_dir='valid/JPEGImages', has_labels=True),
+    ))
+
+
+@dataclass
 class Coco2014Cfg(CocoCfg):
     variant: str = '2014'
     splits: Dict[str, dict] = field(default_factory=lambda: dict(
